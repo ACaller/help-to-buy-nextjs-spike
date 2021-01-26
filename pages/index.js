@@ -1,65 +1,47 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import React, { useState } from "react";
+import FormField from "../components/form-field.component";
+import Button from "../components/button.component";
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
-        <title>Create Next App</title>
+        <title>Help To Buy Calculator</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+      <div className="flex flex-col align-start min-h-screen py-8 mx-4">
+        <div className="">
+          <h1 className="font-bold text-xl text-green-800 text-center">
+            Welcome to the Help To Buy Calculator
+          </h1>
+          <p className="text-lg text-green-700 text-center">
+            Just enter a few simple details to calculate what you could afford
+          </p>
         </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+        <form className="m-auto mt-8" action="/results">
+          <FormField
+            question="How much money do you have for your deposit?"
+            name="deposit"
+          />
+          <FormField
+            question="What is your annual salary?"
+            name="salary"
+          />
+          <FormField
+            question="How much is the house you wish you could buy?"
+            name="propertyValue"
+          />
+          <div className="flex flex-col ">
+            <p className="py-8">
+              Remember to leave about £1,500 for legal fees and also consider
+              moving costs and essential furniture purchases
+            </p>
+            <Button>Submit</Button>
+          </div>
+        </form>
+      </div>
     </div>
-  )
+  );
 }
