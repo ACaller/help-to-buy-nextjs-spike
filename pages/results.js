@@ -4,9 +4,10 @@ import Button from "../components/button.component";
 import Head from "next/head";
 
 export async function getServerSideProps({ query }) {
-  const { deposit, salary, propertyValue } = query;
+  const { deposit, salary, propertyValue, london40 } = query;
+  const helptoBuyPercentage = london40==="on"? 40:20;
   const maxMortgage = salary * 4.5;
-  const helpToBuyLoan = 0.2 * propertyValue;
+  const helpToBuyLoan = helptoBuyPercentage / 100  * propertyValue;
   const depositAt5 = 0.05 * propertyValue;
   const shortfall = propertyValue - helpToBuyLoan - maxMortgage;
   const minimumDeposit = shortfall > depositAt5 ? shortfall : depositAt5;
@@ -20,6 +21,7 @@ export async function getServerSideProps({ query }) {
   return {
     props: {
       ...query,
+      helptoBuyPercentage,
       maxMortgage,
       helpToBuyLoan,
       minimumDeposit,
@@ -83,7 +85,7 @@ const Results = props => {
 
           <Row
             label="Help To Buy Loan"
-            value={`${props.helpToBuyLoan} (20%)`}
+            value={`${props.helpToBuyLoan} (${props.helptoBuyPercentage}%)`}
           />
           <Row
             label="Mortgage"

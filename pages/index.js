@@ -25,14 +25,25 @@ export default function Home() {
             question="How much money do you have for your deposit?"
             name="deposit"
           />
-          <FormField
-            question="What is your annual salary?"
-            name="salary"
-          />
+          <FormField question="What is your annual salary?" name="salary" />
           <FormField
             question="How much is the house you wish you could buy?"
             name="propertyValue"
           />
+          <div className="my-6 lg:my-2 w-full justify-between grid grid-cols-1 lg:grid-cols-5 py-3">
+            <label
+              className="font-semibold lg:self-center col-span-3 lg:pr-3"
+              htmlFor="london40"
+            >
+              Are you buying in London and wanting a 40% Help To Buy equity loan?
+            </label>
+              <input
+                type="checkbox"
+                name="london40"
+                id="london40"
+                className=" col-span-2 self-center p-3 focus:outline-none border border-grey-600 h-6 w-6"
+              />
+          </div>
           <div className="flex flex-col ">
             <p className="py-8">
               Remember to leave about £1,500 for legal fees and also consider
